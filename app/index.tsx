@@ -65,7 +65,8 @@ const post = [
 
 export default function Index() {
   return (
-    <View style={{ flex: 1, backgroundColor: "#282828" }}>
+   
+    <ScrollView style={{ flex: 1, backgroundColor: "#282828" }}>
 
       <View style={styles.header}>
 
@@ -157,8 +158,12 @@ export default function Index() {
             <View style={styles.optionRow}>
             <Text style={styles.RecentlyPlayed}>Listening History</Text>
             <Text style={styles.seeall}>See all</Text>
+            
+
             </View>
             <View >
+              
+  
              {post.map((post) => (
               <View key={post.id} >
                 <View style={styles.historyRow}>  
@@ -166,11 +171,14 @@ export default function Index() {
                   style={styles.historyImage} />
                   <Text style={styles.historyTitle}> {post.Title} </Text>
                   </View>
-                  <View>
+                  <View> 
                 <Text style={styles.historyUsername}>{post.username}</Text>                
                 <View style={styles.historyRow}>
                 <Text style={styles.historyUsername}>{post.plays} plays</Text>
                 <Text style={styles.songlength}>{post.songLength}</Text>
+                <View style={styles.optionRow}> 
+                </View>
+
                 </View>
               </View>
               </View>
@@ -182,11 +190,28 @@ export default function Index() {
 
             </View>
 
-          
+            <View style={styles.transferBox}>
+              <Text style={styles.transferText}>
+              💎 Transfer your faves
+              </Text>
+
+              <View style={styles.optionRow}>
+              <Text style={styles.importText}>
+                Easily import your music from Spotify, Apple Music, and more. 
+              </Text>
+            
+
+
+              <Text style={styles.import}>
+                Import
+              </Text>
+              </View>
+
+            </View>
 
 
 
-    </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
@@ -201,6 +226,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     backgroundColor: "#ff00d4",
     borderRadius: 5,
+    paddingHorizontal: 10,
+
   },
   library: {
     color: "#ffffff",
@@ -301,4 +328,34 @@ const styles = StyleSheet.create({
     fontSize: 12,
     
   },
+  transferBox: {
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#9c9c9c",
+    padding: 15,
+    backgroundColor: "#313131",
+  },
+  import: {
+    color: "#282828",
+    fontWeight: "bold",
+    backgroundColor: "#ffffff",
+    borderRadius: 15,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  importText: {
+    color: "#9c9c9c",  },
+    
+    transferText: {
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: 16,       
+    }
+    ,
+
 });
+
+
