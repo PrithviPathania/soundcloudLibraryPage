@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image, ScrollView, FlatList} from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView, FlatList } from "react-native";
 
 
 const post = [
@@ -8,6 +8,8 @@ const post = [
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     postImage: "https://picsum.photos/id/1015/800/800",
     Title: "Song3",
+    plays: "➧ 23.2k",
+    songLength: " ● 3:45",
   },
   {
     id: 2,
@@ -15,6 +17,8 @@ const post = [
     avatar: "https://randomuser.me/api/portraits/women/1.jpg",
     postImage: "https://picsum.photos/id/1025/800/800",
     Title: "Song2",
+    plays: "➧ 15.7k",
+    songLength: " ● 2:20",
   },
   {
     id: 3,
@@ -22,16 +26,18 @@ const post = [
     avatar: "https://randomuser.me/api/portraits/women/2.jpg",
     postImage: "https://picsum.photos/id/1035/800/800",
     Title: "Song1",
+    plays: "➧ 12.5k",
+    songLength: " ● 3:15",
   },
-  
+
   {
     id: 4,
     username: "bob_brown",
     avatar: "https://randomuser.me/api/portraits/men/2.jpg",
     postImage: "https://picsum.photos/id/1045/800/800",
     Title: "Song4",
-
-
+    plays: "➧ 18.3k",
+    songLength: " ● 3:30"
 
 
   }
@@ -42,6 +48,8 @@ const post = [
     avatar: "https://randomuser.me/api/portraits/men/3.jpg",
     postImage: "https://picsum.photos/id/1055/800/800",
     Title: "Song5",
+    plays: "➧ 20.1k",
+    songLength: " ● 1:10"
   }
 
 
@@ -122,34 +130,59 @@ export default function Index() {
           <Text style={styles.optionText}>➧</Text>
         </View>
       </View>
-          
-          <View style={styles.optionRow}>
 
-          <Text style={styles.RecentlyPlayed}>Recently Played</Text>
-          <Text style={styles.seeall}>See all</Text>
-          </View>
+      <View style={styles.optionRow}>
 
-          <View>
-          <View>
-  <ScrollView horizontal
-        showsHorizontalScrollIndicator={false}
-      >
-    {post.map((post) => (
-      <View key={post.id}>
-        <Image source={{ uri: post.postImage }}
-        style={styles.postImage}/>
-        <Text style={styles.postTitle}> {post.Title} </Text>
-        <Text style={styles.postUsername}>{post.username}</Text>
+        <Text style={styles.RecentlyPlayed}>Recently Played</Text>
+        <Text style={styles.seeall}>See all</Text>
       </View>
-    ))}
-  </ScrollView>
-</View>
+
+      <View>
+        <View>
+          <ScrollView horizontal
+            showsHorizontalScrollIndicator={false}
+          >
+            {post.map((post) => (
+              <View key={post.id}>
+                <Image source={{ uri: post.postImage }}
+                  style={styles.postImage} />
+                <Text style={styles.postTitle}> {post.Title} </Text>
+                <Text style={styles.postUsername}>{post.username}</Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      </View> 
+            
+            <View style={styles.optionRow}>
+            <Text style={styles.RecentlyPlayed}>Listening History</Text>
+            <Text style={styles.seeall}>See all</Text>
+            </View>
+            <View >
+             {post.map((post) => (
+              <View key={post.id} >
+                <View style={styles.historyRow}>  
+                <Image source={{ uri: post.postImage }}
+                  style={styles.historyImage} />
+                  <Text style={styles.historyTitle}> {post.Title} </Text>
+                  </View>
+                  <View>
+                <Text style={styles.historyUsername}>{post.username}</Text>                
+                <View style={styles.historyRow}>
+                <Text style={styles.historyUsername}>{post.plays} plays</Text>
+                <Text style={styles.songlength}>{post.songLength}</Text>
+                </View>
+              </View>
+              </View>
+     
+
+              
+            ))}
 
 
+            </View>
 
-          </View>
-
-
+          
 
 
 
@@ -234,9 +267,38 @@ const styles = StyleSheet.create({
   postUsername: {
     color: "#9c9c9c",
     fontSize: 14,
-    marginTop: 5, 
-    
+    marginTop: 5,
+
     marginRight: 10,
     marginLeft: 15,
+  },
+  historyImage: {
+    marginTop: 20,
+    width: 40,
+    height: 40,
+    marginLeft: 20,
+    borderRadius: 5,
+  },
+  historyTitle: {
+    color: "#ffffff",
+    marginLeft: 7,
+    marginTop: 20,
+
+   
+  },
+  historyRow: {
+    flexDirection: "row",
+    alignItems: "center", 
+  },
+  historyUsername: {
+    color: "#9c9c9c",
+    marginLeft: 73,
+    
+  },
+  songlength: {
+    color: "#9c9c9c",
+    marginLeft: 5,
+    fontSize: 12,
+    
   },
 });
