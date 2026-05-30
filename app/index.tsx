@@ -357,12 +357,7 @@ const styles = StyleSheet.create({
       alignItems: "center",
       marginBottom: 10,
     },
-    chocies: {
-      color: "#9c9c9c",
-      fontSize: 20,
-      marginLeft: 'auto',
-      marginRight: 20,
-    }
+    
     
 });
 
