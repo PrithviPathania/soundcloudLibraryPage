@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image, ScrollView, FlatList } from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView, Button, Alert } from "react-native";
 
 
 const post = [
@@ -165,25 +165,31 @@ export default function Index() {
               
   
              {post.map((post) => (
-              <View key={post.id} >
-                <View style={styles.historyRow}>  
+
+                <View> 
+
+                <View style={styles.textByCover}>               
                 <Image source={{ uri: post.postImage }}
-                  style={styles.historyImage} />
-                  <Text style={styles.historyTitle}> {post.Title} </Text>
-                  </View>
-                  <View> 
-                <Text style={styles.historyUsername}>{post.username}</Text>                
-                <View style={styles.historyRow}>
-                <Text style={styles.historyUsername}>{post.plays} plays</Text>
+                style={styles.historyImage} />
+               
+
+                <View>
+                <View>
+                <Text style={styles.postTitle}> {post.Title} </Text>
+                <Text style={styles.postUsername}>{post.username}</Text>   
+
+                </View> 
+                
+                <View style={styles.lengthAndPlays}>            
+                <Text style={styles.songlength}>{post.plays}</Text>
                 <Text style={styles.songlength}>{post.songLength}</Text>
-                <View style={styles.optionRow}> 
-                </View>
 
                 </View>
-              </View>
-              </View>
-     
+                </View>
+                </View> 
 
+              </View>
+             
               
             ))}
 
@@ -209,7 +215,10 @@ export default function Index() {
 
             </View>
 
-
+      <Button 
+        title="Alert" 
+        onPress={() => Alert.alert("Alert Button pressed")} 
+      />
 
     </ScrollView>
   );
@@ -238,13 +247,14 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    marginLeft: 80,
+    marginLeft: "auto",
   },
   profilePicture: {
     width: 40,
     height: 40,
     borderRadius: 20,
     marginLeft: 5,
+    marginRight: 10,
   },
   options: {
     marginTop: 20,
@@ -294,34 +304,17 @@ const styles = StyleSheet.create({
   postUsername: {
     color: "#9c9c9c",
     fontSize: 14,
-    marginTop: 5,
 
-    marginRight: 10,
     marginLeft: 15,
   },
   historyImage: {
-    marginTop: 20,
-    width: 40,
-    height: 40,
-    marginLeft: 20,
+    width: 50,
+    height: 50,
     borderRadius: 5,
+    marginLeft: 20,
+    marginRight: 10,
   },
-  historyTitle: {
-    color: "#ffffff",
-    marginLeft: 7,
-    marginTop: 20,
-
-   
-  },
-  historyRow: {
-    flexDirection: "row",
-    alignItems: "center", 
-  },
-  historyUsername: {
-    color: "#9c9c9c",
-    marginLeft: 73,
-    
-  },
+ 
   songlength: {
     color: "#9c9c9c",
     marginLeft: 5,
@@ -354,8 +347,23 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,       
     }
-    ,
 
+    ,
+    lengthAndPlays: {
+      flexDirection: "row",
+    },
+    textByCover: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 10,
+    },
+    chocies: {
+      color: "#9c9c9c",
+      fontSize: 20,
+      marginLeft: 'auto',
+      marginRight: 20,
+    }
+    
 });
 
 
